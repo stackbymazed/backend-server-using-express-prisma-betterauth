@@ -1,0 +1,19 @@
+import { Request, Response } from "express";
+import { commentService } from "./comment.service";
+
+const createComment = async (req: Request, res: Response) => {
+    try {
+        
+        const result = await commentService.createComment()
+        res.status(201).json(result)
+    } catch (e) {
+        res.status(400).json({
+            error: "Post creation failed",
+            details: e
+        })
+    }
+}
+
+export const commentController = {
+    createComment
+}
