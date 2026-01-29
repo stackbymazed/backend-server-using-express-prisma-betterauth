@@ -61,11 +61,13 @@ const getPostById = async (req: Request, res: Response) => {
         if (!postId) {
             throw new Error("Post Id is required!")
         }
+        console.log(postId);
         const result = await postService.getPostById(postId);
+        console.log(result);
         res.status(200).json(result)
     } catch (e) {
         res.status(400).json({
-            error: "Post creation failed",
+            error: "Post getting failed",
             details: e
         })
     }
